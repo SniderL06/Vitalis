@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitalis | Centro de Readaptación al Movimiento</title>
+    <meta name="description" content="Vitalis es un Centro de Readaptación al Movimiento liderado por el Lic. Randall Martínez Rojas. Especialista en ejercicio correctivo, salud y fuerza.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <span class="logo-text">VITALIS</span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#inicio" class="nav-link">Inicio</a></li>
+                <li><a href="#sobre-mi" class="nav-link">El Coach</a></li>
+                <li><a href="#pilares" class="nav-link">Pilares</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="inicio" class="hero-section" style="background-image: linear-gradient(to bottom, rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.95)), url('studio_bg.png');">
+        <div class="hero-content">
+            <h1 class="hero-title">VITALIS</h1>
+            <p class="hero-subtitle">CENTRO DE READAPTACIÓN AL MOVIMIENTO</p>
+            <div class="hero-divider"></div>
+            <div class="hero-tags">
+                <span>Movimiento Inteligente</span> • 
+                <span>Fuerza</span> • 
+                <span>Funcional</span> • 
+                <span>Equilibrio</span> • 
+                <span>Rendimiento</span> • 
+                <span>Salud</span>
+            </div>
+            <a href="#contacto" class="btn btn-primary">Iniciar Readaptación <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-overlay"></div>
+    </header>
+
+    <!-- Sobre Mí / Perfil Profesional -->
+    <section id="sobre-mi" class="section profile-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">EL COACH</span>
+                <h2>Lic. Randall Martínez Rojas</h2>
+                <div class="heading-line"></div>
+            </div>
+            <div class="profile-grid">
+                <div class="profile-text-content">
+                    <p class="profile-intro">Promotor de Salud y Educador Físico comprometido con devolverle a tu cuerpo su máxima capacidad funcional mediante el movimiento basado en la ciencia.</p>
+                    
+                    <div class="credentials-list">
+                        <div class="credential-item">
+                            <div class="cred-icon-wrapper">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="cred-text">
+                                <h3>Promotor de Salud</h3>
+                                <p>Universidad Nacional (UNA)</p>
+                            </div>
+                        </div>
+
+                        <div class="credential-item">
+                            <div class="cred-icon-wrapper">
+                                <i class="fas fa-university"></i>
+                            </div>
+                            <div class="cred-text">
+                                <h3>Educador Físico</h3>
+                                <p>Universidad Autónoma de Centro América (UACA)</p>
+                            </div>
+                        </div>
+
+                        <div class="credential-item">
+                            <div class="cred-icon-wrapper">
+                                <i class="fas fa-certificate"></i>
+                            </div>
+                            <div class="cred-text">
+                                <h3>Especialista en Ejercicio Correctivo</h3>
+                                <p>National Academy of Sports Medicine (NASM)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Presentación de la Academia / Valores del Coach -->
+                <div class="profile-card">
+                    <div class="profile-card-glow"></div>
+                    <div class="profile-card-content">
+                        <h3>¿Por qué readaptación al movimiento?</h3>
+                        <p>El cuerpo humano está diseñado para moverse de forma eficiente y sin dolor. A través de la combinación de la promoción de la salud, la educación física y las técnicas avanzadas de ejercicio correctivo (NASM), ayudamos a restablecer patrones de movimiento óptimos, superar disfunciones mecánicas y potenciar el rendimiento físico integral.</p>
+                        <span class="coach-badge">RANDALL MR. COACH</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pilares de Vitalis -->
+    <section id="pilares" class="section pillars-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">METODOLOGÍA</span>
+                <h2>Los Pilares de Vitalis</h2>
+                <p class="section-subtitle">Nuestra filosofía de trabajo se basa en 6 pilares fundamentales para tu transformación.</p>
+                <div class="heading-line center"></div>
+            </div>
+            
+            <div class="pillars-grid">
+                <!-- Pilar 1: Conocimiento -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>CONOCIMIENTO</h3>
+                    <p>Formación continua y basada en la evidencia científica para entregarte las mejores herramientas.</p>
+                </div>
+
+                <!-- Pilar 2: Observación -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>OBSERVACIÓN</h3>
+                    <p>Evaluación precisa y minuciosa para entender a profundidad tu cuerpo y tus necesidades individuales.</p>
+                </div>
+
+                <!-- Pilar 3: Personalización -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <h3>PERSONALIZACIÓN</h3>
+                    <p>Programas a medida, completamente adaptados a tu contexto, capacidades y objetivos específicos.</p>
+                </div>
+
+                <!-- Pilar 4: Progresión -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>PROGRESIÓN</h3>
+                    <p>Mejora constante mediante una planificación inteligente, seguimiento periódico y ajustes precisos.</p>
+                </div>
+
+                <!-- Pilar 5: Cercanía -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3>CERCANÍA</h3>
+                    <p>Acompañamiento constante, motivación y un ambiente de plena confianza y seguridad.</p>
+                </div>
+
+                <!-- Pilar 6: Compromiso -->
+                <div class="pillar-card">
+                    <div class="pillar-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>COMPROMISO</h3>
+                    <p>Tu bienestar integral y tu progreso físico continuo son nuestra prioridad absoluta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Canales de Comunicación y Contacto -->
+    <section id="contacto" class="section contact-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">HABLEMOS</span>
+                <h2>Canales de Comunicación</h2>
+                <p class="section-subtitle">¿Listo para iniciar tu proceso de readaptación? Elige tu canal preferido para chatear con el Lic. Randall.</p>
+                <div class="heading-line center"></div>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Formulario de Mensaje Directo -->
+                <div class="main-chat-card">
+                    <h3>Enviar un mensaje</h3>
+                    <p>Escríbenos directamente para agendar tu primera sesión de evaluación.</p>
+                    
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <label for="form-name">Tu nombre</label>
+                            <input type="text" id="form-name" name="from_name" placeholder="Ej. Alex Mercer" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-email">Correo electrónico</label>
+                            <input type="email" id="form-email" name="reply_to" placeholder="Ej. alex@correo.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="form-message">Tu mensaje</label>
+                            <textarea id="form-message" name="message" rows="5" placeholder="Escribe aquí tu mensaje para el Lic. Randall Martínez..." required></textarea>
+                        </div>
+                        <button type="submit" id="submit-btn" class="btn btn-primary submit-btn">Enviar Mensaje <i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+
+                <!-- Redes Sociales Oficiales -->
+                <div class="social-connect-card">
+                    <h3>Redes &amp; Contacto Rápido</h3>
+                    <p>Chatea directamente o sigue el contenido diario de salud y ejercicio.</p>
+                    
+                    <div class="social-links-list">
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/50688627929" target="_blank" rel="noopener noreferrer" class="social-item whatsapp-social">
+                            <div class="social-icon-box">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="social-details">
+                                <span class="social-name">WhatsApp</span>
+                                <span class="social-user">+506 8862-7929 · Chat directo</span>
+                            </div>
+                            <span class="social-arrow"><i class="fas fa-chevron-right"></i></span>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/randallmr.coach/" target="_blank" rel="noopener noreferrer" class="social-item instagram">
+                            <div class="social-icon-box">
+                                <i class="fab fa-instagram"></i>
+                            </div>
+                            <div class="social-details">
+                                <span class="social-name">Instagram</span>
+                                <span class="social-user">randallmr.coach</span>
+                            </div>
+                            <span class="social-arrow"><i class="fas fa-chevron-right"></i></span>
+                        </a>
+
+                        <!-- TikTok -->
+                        <a href="https://www.tiktok.com/@sensei.mr" target="_blank" rel="noopener noreferrer" class="social-item tiktok">
+                            <div class="social-icon-box">
+                                <i class="fab fa-tiktok"></i>
+                            </div>
+                            <div class="social-details">
+                                <span class="social-name">TikTok</span>
+                                <span class="social-user">sensei.mr</span>
+                            </div>
+                            <span class="social-arrow"><i class="fas fa-chevron-right"></i></span>
+                        </a>
+
+                        <!-- Facebook -->
+                        <a href="https://www.facebook.com/smartwellness.gym" target="_blank" rel="noopener noreferrer" class="social-item facebook">
+                            <div class="social-icon-box">
+                                <i class="fab fa-facebook-f"></i>
+                            </div>
+                            <div class="social-details">
+                                <span class="social-name">Facebook</span>
+                                <span class="social-user">smartwellness.gym</span>
+                            </div>
+                            <span class="social-arrow"><i class="fas fa-chevron-right"></i></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p class="footer-logo">VITALIS</p>
+            <p class="footer-desc">Lic. Randall Martínez Rojas • Promotor de Salud & Especialista en Ejercicio Correctivo</p>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Vitalis. Todos los derechos reservados. Diseñado para un estilo de vida saludable e inteligente.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>
