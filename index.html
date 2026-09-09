@@ -27,6 +27,7 @@
                 <li><a href="#inicio" class="nav-link">Inicio</a></li>
                 <li><a href="#sobre-mi" class="nav-link">El Coach</a></li>
                 <li><a href="#pilares" class="nav-link">Pilares</a></li>
+                <li><a href="#galeria" class="nav-link">Galería</a></li>
                 <li><a href="#contacto" class="nav-link">Contacto</a></li>
             </ul>
             <div class="hamburger">
@@ -38,20 +39,56 @@
     </nav>
 
     <!-- Hero Section -->
-    <header id="inicio" class="hero-section" style="background-image: linear-gradient(to bottom, rgba(15, 15, 15, 0.8), rgba(15, 15, 15, 0.95)), url('studio_bg.png');">
-        <div class="hero-content">
-            <h1 class="hero-title">VITALIS</h1>
-            <p class="hero-subtitle">CENTRO DE READAPTACIÓN AL MOVIMIENTO</p>
-            <div class="hero-divider"></div>
-            <div class="hero-tags">
-                <span>Movimiento Inteligente</span> • 
-                <span>Fuerza</span> • 
-                <span>Funcional</span> • 
-                <span>Equilibrio</span> • 
-                <span>Rendimiento</span> • 
-                <span>Salud</span>
+    <header id="inicio" class="hero-section" style="background-image: linear-gradient(to bottom, rgba(10, 10, 10, 0.88), rgba(10, 10, 10, 0.97)), url('studio_bg.png');">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-coach-badge">
+                    <span class="badge-pulse"></span>
+                    <span>Lic. Randall Martínez Rojas</span>
+                </div>
+                <h1 class="hero-title">VITALIS</h1>
+                <p class="hero-subtitle">CENTRO DE READAPTACIÓN AL MOVIMIENTO</p>
+                <div class="hero-divider"></div>
+                <p class="hero-description">
+                    Recupera tu movilidad, supera el dolor y alcanza tu máximo potencial físico con entrenamiento y ejercicio correctivo basado en la ciencia.
+                </p>
+                <div class="hero-tags">
+                    <span>Movimiento Inteligente</span> • 
+                    <span>Fuerza</span> • 
+                    <span>Funcional</span> • 
+                    <span>Equilibrio</span> • 
+                    <span>Rendimiento</span> • 
+                    <span>Salud</span>
+                </div>
+                <div class="hero-actions">
+                    <a href="#contacto" class="btn btn-primary">Iniciar Readaptación <i class="fas fa-arrow-right"></i></a>
+                    <a href="#galeria" class="btn btn-secondary"><i class="fas fa-play-circle"></i> Ver Galería</a>
+                </div>
             </div>
-            <a href="#contacto" class="btn btn-primary">Iniciar Readaptación <i class="fas fa-arrow-right"></i></a>
+
+            <div class="hero-visual">
+                <div class="hero-portrait-card">
+                    <div class="portrait-glow"></div>
+                    <div class="portrait-image-wrapper">
+                        <img src="assets/IMG-20260909-WA0001.jpg" alt="Lic. Randall Martínez Rojas - Director de Vitalis" class="hero-portrait-img" fetchpriority="high">
+                        <div class="portrait-image-overlay"></div>
+                    </div>
+                    <div class="portrait-badge badge-top">
+                        <div class="badge-icon"><i class="fas fa-award"></i></div>
+                        <div class="badge-info">
+                            <strong>Especialista NASM</strong>
+                            <span>Ejercicio Correctivo</span>
+                        </div>
+                    </div>
+                    <div class="portrait-badge badge-bottom">
+                        <div class="badge-icon"><i class="fas fa-graduation-cap"></i></div>
+                        <div class="badge-info">
+                            <strong>Promotor de Salud</strong>
+                            <span>Univ. Nacional (UNA)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="hero-overlay"></div>
     </header>
@@ -181,6 +218,173 @@
             </div>
         </div>
     </section>
+
+    <!-- Galería Multimedia -->
+    <section id="galeria" class="section gallery-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">EXPERIENCIA VITALIS</span>
+                <h2>Galería de Sesiones &amp; Resultados</h2>
+                <p class="section-subtitle">Conoce nuestras sesiones grupales, entrenamientos personalizados y el impacto real de la readaptación al movimiento.</p>
+                <div class="heading-line center"></div>
+            </div>
+
+            <!-- Filtros de Galería -->
+            <div class="gallery-filters">
+                <button type="button" class="gallery-filter-btn active" data-filter="all">
+                    <i class="fas fa-border-all"></i> Todos
+                </button>
+                <button type="button" class="gallery-filter-btn" data-filter="photo">
+                    <i class="fas fa-camera"></i> Fotos
+                </button>
+                <button type="button" class="gallery-filter-btn" data-filter="video">
+                    <i class="fas fa-video"></i> Videos
+                </button>
+            </div>
+
+            <!-- Cuadrícula de Galería -->
+            <div class="gallery-grid">
+                <!-- Video 1: Entrenamiento en Acción -->
+                <div class="gallery-item" data-category="video">
+                    <div class="gallery-card video-card" data-video-src="assets/VID-20260907-WA0005.mp4" data-title="Sesión Dinámica en Acción" data-desc="Entrenamiento de fuerza funcional y dinamismo en sesión grupal guiada por el Lic. Randall.">
+                        <div class="media-container">
+                            <video class="gallery-video-preview" preload="metadata" playsinline muted loop>
+                                <source src="assets/VID-20260907-WA0005.mp4#t=0.5" type="video/mp4">
+                                Tu navegador no soporta reproducción de video.
+                            </video>
+                            <div class="media-badge video-badge">
+                                <i class="fas fa-play"></i> Video
+                            </div>
+                            <div class="video-play-btn" aria-label="Reproducir video">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="media-overlay">
+                                <span class="overlay-action"><i class="fas fa-play"></i> Reproducir</span>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3>Sesión Dinámica en Acción</h3>
+                            <p>Entrenamiento de fuerza funcional y dinamismo en sesión grupal guiada.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 1: Movilidad y Readaptación Grupal -->
+                <div class="gallery-item" data-category="photo">
+                    <div class="gallery-card" data-full-src="assets/IMG-20260907-WA0000.jpg" data-title="Movilidad y Ejercicio Correctivo" data-desc="Activación neuromuscular, equilibrio y fortalecimiento guiado con bandas elásticas.">
+                        <div class="media-container">
+                            <img src="assets/IMG-20260907-WA0000.jpg" alt="Movilidad y Ejercicio Correctivo en Vitalis" loading="lazy">
+                            <div class="media-badge photo-badge">
+                                <i class="fas fa-camera"></i> Foto
+                            </div>
+                            <div class="media-overlay">
+                                <span class="overlay-icon"><i class="fas fa-search-plus"></i></span>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3>Movilidad y Ejercicio Correctivo</h3>
+                            <p>Activación neuromuscular, trabajo postural y fortalecimiento con bandas elásticas.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 2: Randall de traje (Perfil Profesional) -->
+                <div class="gallery-item" data-category="photo">
+                    <div class="gallery-card" data-full-src="assets/IMG-20260909-WA0001.jpg" data-title="Lic. Randall Martínez Rojas" data-desc="Director y fundador de Vitalis. Promotor de Salud y Educador Físico con certificación NASM en Ejercicio Correctivo.">
+                        <div class="media-container">
+                            <img src="assets/IMG-20260909-WA0001.jpg" alt="Lic. Randall Martínez Rojas - Vitalis" loading="lazy">
+                            <div class="media-badge profile-badge">
+                                <i class="fas fa-user-tie"></i> Perfil
+                            </div>
+                            <div class="media-overlay">
+                                <span class="overlay-icon"><i class="fas fa-search-plus"></i></span>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3>Lic. Randall Martínez Rojas</h3>
+                            <p>Liderazgo profesional con base científica para la salud y el rendimiento humano.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 3: Comunidad Vitalis al Aire Libre -->
+                <div class="gallery-item" data-category="photo">
+                    <div class="gallery-card" data-full-src="assets/IMG-20260907-WA0001.jpg" data-title="Comunidad Vitalis en Movimiento" data-desc="Entrenamiento al aire libre combinando bienestar físico, espíritu de equipo y constancia.">
+                        <div class="media-container">
+                            <img src="assets/IMG-20260907-WA0001.jpg" alt="Comunidad Vitalis en movimiento" loading="lazy">
+                            <div class="media-badge photo-badge">
+                                <i class="fas fa-camera"></i> Foto
+                            </div>
+                            <div class="media-overlay">
+                                <span class="overlay-icon"><i class="fas fa-search-plus"></i></span>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3>Comunidad en Movimiento</h3>
+                            <p>Sesiones integrales al aire libre que promueven la salud física y la motivación.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 4: Cercanía y Acompañamiento -->
+                <div class="gallery-item" data-category="photo">
+                    <div class="gallery-card" data-full-src="assets/IMG-20260907-WA0002.jpg" data-title="Cercanía &amp; Acompañamiento" data-desc="El valor de un espacio seguro, humano y personalizado para cada alumno y paciente.">
+                        <div class="media-container">
+                            <img src="assets/IMG-20260907-WA0002.jpg" alt="Acompañamiento y cercanía en Vitalis" loading="lazy">
+                            <div class="media-badge photo-badge">
+                                <i class="fas fa-camera"></i> Foto
+                            </div>
+                            <div class="media-overlay">
+                                <span class="overlay-icon"><i class="fas fa-search-plus"></i></span>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3>Cercanía &amp; Acompañamiento</h3>
+                            <p>Construcción de hábitos saludables en un ambiente de confianza mutua y respeto.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foto 5: Técnica y Rendimiento en Cancha -->
+                <div class="gallery-item" data-category="photo">
+                    <div class="gallery-card" data-full-src="assets/IMG-20260907-WA0004.jpg" data-title="Técnica &amp; Acondicionamiento" data-desc="Preparación física deportiva y optimización de patrones motores en instalaciones atléticas.">
+                        <div class="media-container">
+                            <img src="assets/IMG-20260907-WA0004.jpg" alt="Acondicionamiento físico y atlético" loading="lazy">
+                            <div class="media-badge photo-badge">
+                                <i class="fas fa-camera"></i> Foto
+                            </div>
+                            <div class="media-overlay">
+                                <span class="overlay-icon"><i class="fas fa-search-plus"></i></span>
+                            </div>
+                        </div>
+                        <div class="gallery-info">
+                            <h3>Técnica &amp; Acondicionamiento</h3>
+                            <p>Evaluación y readaptación de la postura y el gesto atlético en pista y cancha.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Lightbox para Galería -->
+    <div id="gallery-lightbox" class="gallery-lightbox" aria-hidden="true" role="dialog" aria-modal="true">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-dialog">
+            <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Cerrar visor">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="lightbox-body">
+                <div class="lightbox-media-wrapper" id="lightbox-media-wrapper">
+                    <!-- Elemento multimedia (img o video) inyectado por JavaScript -->
+                </div>
+                <div class="lightbox-caption">
+                    <h3 id="lightbox-title"></h3>
+                    <p id="lightbox-desc"></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Canales de Comunicación y Contacto -->
     <section id="contacto" class="section contact-section">
