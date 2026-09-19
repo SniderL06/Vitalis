@@ -232,4 +232,126 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
         });
     }
+
+    // 7. Conteo de Visualizaciones en Vivo (Hero, Footer y Toast de Bienvenida)
+    const initVisitorCounter = () => {
+        const COUNTER_KEY = "vitalis_coach_official_visits";
+        const API_BASE = "https://countapi.mileshilliard.com/api/v1";
+
+        const heroCountEl   = document.getElementById("visitor-count-number");
+        const footerTotalEl = document.getElementById("footer-total-views");
+        const footerRankEl  = document.getElementById("footer-user-rank");
+        const toastEl       = document.getElementById("visitor-toast");
+        const toastNumberEl = document.getElementById("toast-visitor-number");
+        const toastCloseBtn = document.getElementById("toast-close");
+
+        // Función auxiliar para animación progresiva de números
+        const animateNumber = (element, targetValue, prefix = "#") => {
+            if (!element) return;
+            const duration = 1200;
+            const startTime = performance.now();
+            const format = (n) => prefix + Number(n).toLocaleString("es-CR");
+
+            const step = (now) => {
+                const progress = Math.min((now - startTime) / duration, 1);
+                // Curva de aceleración suave (ease-out cubic)
+                const ease = 1 - Math.pow(1 - progress, 3);
+                const current = Math.floor(ease * targetValue);
+                element.textContent = format(current);
+                if (progress < 1) {
+                    requestAnimationFrame(step);
+                } else {
+                    element.textContent = format(targetValue);
+                }
+            };
+            requestAnimationFrame(step);
+        };
+
+        // Renderizar los números en la interfaz
+        const renderCounts = (userRank, totalViews) => {
+            // 1. Contador destacado en Hero
+            animateNumber(heroCountEl, userRank, "#");
+
+            // 2. Contador en Footer
+            if (footerTotalEl) {
+                footerTotalEl.textContent = Number(totalViews).toLocaleString("es-CR");
+            }
+            if (footerRankEl) {
+                footerRankEl.textContent = "#" + Number(userRank).toLocaleString("es-CR");
+            }
+
+            // 3. Notificación Toast flotante de bienvenida
+            if (toastEl && toastNumberEl) {
+                toastNumberEl.textContent = "#" + Number(userRank).toLocaleString("es-CR");
+                
+                // Mostrar con leve delay para efecto dinámico
+                setTimeout(() => {
+                    toastEl.classList.add("active");
+                }, 1200);
+
+                // Auto-cerrar a los 8 segundos
+                const autoDismiss = setTimeout(() => {
+                    toastEl.classList.remove("active");
+                }, 8000);
+
+                if (toastCloseBtn) {
+                    toastCloseBtn.addEventListener("click", () => {
+                        clearTimeout(autoDismiss);
+                        toastEl.classList.remove("active");
+                    });
+                }
+            }
+        };
+
+        // Comprobar si es una nueva sesión o si ya visitó en esta pestaña
+        const sessionVisit = sessionStorage.getItem("vitalis_session_visit");
+        
+        // Timeout de seguridad de 4 segundos para no bloquear la UI si la red está lenta
+        const fetchWithTimeout = (url, timeout = 4000) => {
+            return Promise.race([
+                fetch(url),
+                new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), timeout))
+            ]);
+        };
+
+        if (!sessionVisit) {
+            // Nueva visita: Incrementamos el conteo global
+            fetchWithTimeout(`${API_BASE}/hit/${COUNTER_KEY}`)
+                .then(res => res.json())
+                .then(data => {
+                    if (data && typeof data.value === "number") {
+                        const newCount = data.value;
+                        sessionStorage.setItem("vitalis_session_visit", newCount);
+                        localStorage.setItem("vitalis_latest_visit_count", newCount);
+                        renderCounts(newCount, newCount);
+                    } else {
+                        throw new Error("Respuesta inválida");
+                    }
+                })
+                .catch(() => {
+                    // Fallback local por seguridad si no hay conexión
+                    const fallback = parseInt(localStorage.getItem("vitalis_latest_visit_count"), 10) || 1;
+                    const nextFallback = fallback + 1;
+                    sessionStorage.setItem("vitalis_session_visit", nextFallback);
+                    localStorage.setItem("vitalis_latest_visit_count", nextFallback);
+                    renderCounts(nextFallback, nextFallback);
+                });
+        } else {
+            // El usuario ya visitó en esta sesión: mantenemos su número de visitante
+            const userRank = parseInt(sessionVisit, 10);
+            
+            // Consultamos el total actual sin incrementar
+            fetchWithTimeout(`${API_BASE}/get/${COUNTER_KEY}`)
+                .then(res => res.json())
+                .then(data => {
+                    const total = (data && typeof data.value === "number") ? data.value : userRank;
+                    renderCounts(userRank, total);
+                })
+                .catch(() => {
+                    renderCounts(userRank, userRank);
+                });
+        }
+    };
+
+    initVisitorCounter();
 });
