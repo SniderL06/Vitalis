@@ -287,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Mostrar con leve delay para efecto dinámico
                 setTimeout(() => {
                     toastEl.classList.add("active");
-                }, 1200);
+                }, 1000);
 
                 // Auto-cerrar a los 8 segundos
                 const autoDismiss = setTimeout(() => {
@@ -303,49 +303,72 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         };
 
+        // Consulta de doble capa (First-party /api/counter + Cloud Fallback)
+        const fetchCount = async (action) => {
+            // 1. Intentar primero con la ruta de API interna (/api/counter)
+            // Esto evita bloqueadores de anuncios (uBlock, Brave, Safari) porque es del mismo dominio
+            try {
+                const controller1 = new AbortController();
+                const timeout1 = setTimeout(() => controller1.abort(), 6000);
+                const res = await fetch(`/api/counter?action=${action}`, { signal: controller1.signal });
+                clearTimeout(timeout1);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && typeof data.count === "number") {
+                        return data.count;
+                    }
+                }
+            } catch (e) {
+                // Si estamos en localhost o aún no se ha desplegado la ruta de Vercel
+                console.warn("Ruta /api/counter no disponible, intentando servicio en la nube...", e);
+            }
+
+            // 2. Fallback directo a la API en la nube
+            try {
+                const controller2 = new AbortController();
+                const timeout2 = setTimeout(() => controller2.abort(), 7000);
+                const res = await fetch(`${API_BASE}/${action}/${COUNTER_KEY}`, { signal: controller2.signal });
+                clearTimeout(timeout2);
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data && typeof data.value === "number") {
+                        return data.value;
+                    }
+                }
+            } catch (e) {
+                console.warn("API de nube falló:", e);
+            }
+
+            throw new Error("No se pudo obtener el conteo de visualizaciones");
+        };
+
         // Comprobar si es una nueva sesión o si ya visitó en esta pestaña
         const sessionVisit = sessionStorage.getItem("vitalis_session_visit");
-        
-        // Timeout de seguridad de 4 segundos para no bloquear la UI si la red está lenta
-        const fetchWithTimeout = (url, timeout = 4000) => {
-            return Promise.race([
-                fetch(url),
-                new Promise((_, reject) => setTimeout(() => reject(new Error("Timeout")), timeout))
-            ]);
-        };
 
         if (!sessionVisit) {
             // Nueva visita: Incrementamos el conteo global
-            fetchWithTimeout(`${API_BASE}/hit/${COUNTER_KEY}`)
-                .then(res => res.json())
-                .then(data => {
-                    if (data && typeof data.value === "number") {
-                        const newCount = data.value;
-                        sessionStorage.setItem("vitalis_session_visit", newCount);
-                        localStorage.setItem("vitalis_latest_visit_count", newCount);
-                        renderCounts(newCount, newCount);
-                    } else {
-                        throw new Error("Respuesta inválida");
-                    }
+            fetchCount("hit")
+                .then(newCount => {
+                    sessionStorage.setItem("vitalis_session_visit", newCount);
+                    localStorage.setItem("vitalis_latest_visit_count", newCount);
+                    renderCounts(newCount, newCount);
                 })
                 .catch(() => {
-                    // Fallback local por seguridad si no hay conexión
-                    const fallback = parseInt(localStorage.getItem("vitalis_latest_visit_count"), 10) || 1;
-                    const nextFallback = fallback + 1;
-                    sessionStorage.setItem("vitalis_session_visit", nextFallback);
-                    localStorage.setItem("vitalis_latest_visit_count", nextFallback);
-                    renderCounts(nextFallback, nextFallback);
+                    // Fallback de contingencia: nunca reiniciar a 1 o 2
+                    const lastKnown = parseInt(localStorage.getItem("vitalis_latest_visit_count"), 10) || 30;
+                    const fallbackCount = Math.max(lastKnown, 30) + 1;
+                    sessionStorage.setItem("vitalis_session_visit", fallbackCount);
+                    localStorage.setItem("vitalis_latest_visit_count", fallbackCount);
+                    renderCounts(fallbackCount, fallbackCount);
                 });
         } else {
-            // El usuario ya visitó en esta sesión: mantenemos su número de visitante
+            // El usuario ya visitó en esta sesión: mantenemos su número de visitante asignado
             const userRank = parseInt(sessionVisit, 10);
             
             // Consultamos el total actual sin incrementar
-            fetchWithTimeout(`${API_BASE}/get/${COUNTER_KEY}`)
-                .then(res => res.json())
-                .then(data => {
-                    const total = (data && typeof data.value === "number") ? data.value : userRank;
-                    renderCounts(userRank, total);
+            fetchCount("get")
+                .then(totalViews => {
+                    renderCounts(userRank, Math.max(totalViews, userRank));
                 })
                 .catch(() => {
                     renderCounts(userRank, userRank);
